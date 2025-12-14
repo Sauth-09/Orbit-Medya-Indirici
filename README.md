@@ -1,54 +1,62 @@
-# 🚀 Orbit Medya İndirici
+# 🪐 Orbit Medya İndirici
 
-**Okul Ağlarında Çalışan, Turbo Hızlı, Profesyonel YouTube ve Medya İndirme Aracı.**
+**İnternetin tamamını arşivleyin. Hızlı, Şık ve Güçlü.**
 
-Orbit; karmaşık indirme siteleriyle uğraşmadan, YouTube videolarını, oynatma listelerini ve müzikleri en yüksek kalitede indirmenizi sağlar. Özellikle **MEB/Fatih** gibi kısıtlı ağlarda sorunsuz çalışacak şekilde tasarlanmıştır.
+Orbit; sadece bir YouTube indiricisi değil, internetteki binlerce siteden video ve müzik indirmenizi sağlayan **evrensel** bir araçtır. Açık kaynak kodlu `yt-dlp` motorunun gücünü, modern ve kullanıcı dostu bir arayüzle birleştirir.
 
 ---
 
-## 📥 İNDİRME (Download)
+## 📥 İNDİR (Download)
 
-Programın en son sürümünü (v21.0) indirmek için aşağıdaki butona tıklayın:
+Programın en son sürümünü (Windows 64-bit) indirmek için butona tıklayın:
 
 # [👉 İNDİRMEK İÇİN TIKLA (Son Sürüm)](../../releases/latest)
 
-*(Açılan sayfada "Assets" başlığı altındaki **Orbit_Kurulum.exe** dosyasına tıklayın)*
+*(Linke tıkladıktan sonra açılan sayfada `Orbit_Kurulum_vXX.X.exe` dosyasına tıklayın)*
 
 ---
 
 ## 🔥 Neden Orbit?
 
-### 1. 🏫 Okul Ağı Dostu (MEB/Fatih)
-Okullardaki ve kurumlardaki güvenlik duvarlarının yarattığı "Güvenli Bağlantı / SSL" hatalarını otomatik olarak aşar. VPN gerektirmez.
+### 🌍 1. Sadece YouTube Değil, Her Yer!
+Orbit, arkasındaki güçlü motor sayesinde sadece YouTube'u değil; **Instagram, TikTok, Twitter (X), Facebook, Twitch, Vimeo, Dailymotion** ve desteklenen 1000'den fazla sitedeki videoları sorunsuz indirir. Linki yapıştırmanız yeterli.
 
-### 2. ⚡ Turbo İndirme Modu
-İçindeki **Aria2c** motoru sayesinde dosyaları 16 parçaya bölerek indirir. Tarayıcı indirmesinden 5 kata kadar daha hızlıdır.
+### ✂️ 2. Akıllı Kırpma (Cut & Download)
+2 saatlik bir yayının sadece komik olan 30 saniyesini mi istiyorsunuz?
+Videoyu tamamen indirip montaj programlarıyla uğraşmanıza gerek yok. Orbit'e başlangıç ve bitiş süresini girin, **sadece o kısmı indirsin.** Kotanızı ve zamanınızı koruyun.
 
-### 3. 🎨 Kişiselleştirilebilir Temalar
-Sıkıcı gri ekranlara son! Siber Neon, Retro Amber veya Okyanus Mavisi... 6 farklı tema seçeneğiyle tarzınızı yansıtın.
+### 🎬 3. Format ve Kalite Kontrolü Sizde
+* **Video:** 4K, 2K, 1080p, 720p... En yüksek kalite neyse onu yakalar.
+* **Ses (MP3):** Videoları en yüksek kalitede MP3'e dönüştürür.
+* **Orjinal Ses (M4A):** Dönüştürme kaybı olmadan saf sesi indirir.
 
-### 4. ✂️ Akıllı Kırpma (Cut & Download)
-1 saatlik videonun sadece 3 dakikalık bir kısmı mı lazım? Videoyu indirmeden önce saniye aralığını girin, sadece o kısmı indirin.
+### ⚡ 4. Turbo İndirme Modu
+İçindeki `Aria2c` hızlandırıcı sayesinde dosyaları 16 parçaya bölerek indirir. Tarayıcı ile indirmeye göre 5 kata kadar daha hızlıdır.
 
-### 5. 📂 Düzenli Arşivleme
-İndirdiğiniz dosyaları masaüstüne yığmaz. `Orbit İndirilenler` klasörü içinde **Video** ve **Ses** olarak otomatik kategorize eder.
-
----
-
-## 📸 Özellik Listesi
-
-- [x] YouTube Video (4K/1080p/720p) İndirme
-- [x] YouTube MP3 Dönüştürme (Yüksek Kalite)
-- [x] Oynatma Listesi Desteği
-- [x] Panodaki linki otomatik yapıştırma
-- [x] İndirme konumu değiştirebilme
-- [x] Otomatik güncellenen motor (yt-dlp)
+### 🎨 5. Göz Alıcı Temalar
+Sıkıcı gri programlardan sıkılmadınız mı? Siber Neon, Retro Amber, Okyanus Mavisi gibi 6 farklı tema seçeneği ile Orbit'i tarzınıza göre renklendirin.
 
 ---
 
-## ⚠️ Yasal Uyarı (Disclaimer)
+## 🛡️ Profesyonel Özellikler
 
-Bu proje; açık kaynaklı `yt-dlp`, `FFmpeg` ve `Aria2c` kütüphanelerinin gücünü kullanır. Yazılım **yalnızca eğitim ve kişisel kullanım (fair use)** amacıyla geliştirilmiştir. Telif hakkı ile korunan materyallerin izinsiz dağıtılması kullanıcının sorumluluğundadır.
+> **Okul ve Kurum Ağları İçin:**
+> Orbit, MEB (Fatih), Üniversite veya Şirket ağlarındaki kısıtlayıcı güvenlik duvarlarının yarattığı "SSL/Sertifika" hatalarını otomatik olarak algılar ve aşar. VPN gerektirmez, doğrudan çalışır.
+
+* **Akıllı Arşiv:** İndirilenleri `Video` ve `Ses` klasörlerine otomatik ayırır.
+* **Temiz Kaldırma:** Programı kaldırdığınızda bilgisayarınızda çöp dosya bırakmaz.
+* **Reklamsız:** Arayüzde reklam, açılır pencere veya rahatsız edici öğeler yoktur.
 
 ---
-**Geliştirici:** Sadullah E. | *Python & CustomTkinter ile yapılmıştır.*
+
+## 📸 Ekran Görüntüleri
+*(Buraya daha sonra programın arayüz resimlerini ekleyebilirsiniz)*
+
+---
+
+## ⚠️ Yasal Uyarı
+
+Bu yazılım; açık kaynaklı `yt-dlp`, `FFmpeg` ve `Aria2c` projelerinin grafik arayüzüdür. Yazılım **yalnızca kişisel kullanım ve eğitim (fair use)** amacıyla geliştirilmiştir. Telif hakkı ile korunan materyallerin izinsiz çoğaltılması ve dağıtılması kullanıcının sorumluluğundadır.
+
+---
+**Geliştirici:** Sadullah E. | *Python & CustomTkinter*
