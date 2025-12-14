@@ -12,7 +12,7 @@ Programın en son sürümünü (Windows 64-bit) indirmek için butona tıklayın
 
 # [👉 İNDİRMEK İÇİN TIKLA (Son Sürüm)](../../releases/latest)
 
-*(Linke tıkladıktan sonra açılan sayfada `Orbit_Kurulum_vXX.X.exe` dosyasına tıklayın)*
+*(Linke tıkladıktan sonra açılan sayfada Assets altında `Orbit_Kurulum_vXX.X.exe` dosyasına tıklayın)*
 
 ---
 
