@@ -46,7 +46,7 @@ Sıkıcı gri programlardan sıkılmadınız mı? Siber Neon, Retro Amber, Okyan
 ## 🛡️ Profesyonel Özellikler
 
 > **Okul ve Kurum Ağları İçin:**
-> Orbit, MEB (Fatih), Üniversite veya Şirket ağlarındaki kısıtlayıcı güvenlik duvarlarının yarattığı "SSL/Sertifika" hatalarını otomatik olarak algılar ve aşar. VPN gerektirmez, doğrudan çalışır.
+> Orbit, MEB (Fatih), Üniversite veya Şirket ağlarındaki kısıtlayıcı güvenlik duvarı dolayısıyla meydana gelebilen "SSL/Sertifika" hatalarını otomatik olarak algılar ve aşar. VPN gerektirmez, doğrudan çalışır.
 
 ## ✨ Öne Çıkan Özellikler
 
@@ -73,7 +73,7 @@ Sıkıcı gri programlardan sıkılmadınız mı? Siber Neon, Retro Amber, Okyan
 ---
 ## ⚠️ Yasal Uyarı
 
-Bu yazılım; açık kaynaklı `yt-dlp`, `FFmpeg` ve `Aria2c` projelerinin grafik arayüzüdür. Yazılım **yalnızca kişisel kullanım ve eğitim (fair use)** amacıyla geliştirilmiştir. Telif hakkı ile korunan materyallerin izinsiz çoğaltılması ve dağıtılması kullanıcının sorumluluğundadır.
+Bu yazılım; açık kaynaklı `yt-dlp`, `FFmpeg` projelerinin grafik arayüzüdür. Yazılım **yalnızca kişisel kullanım ve eğitim (fair use)** amacıyla geliştirilmiştir. Telif hakkı ile korunan materyallerin izinsiz çoğaltılması ve dağıtılması kullanıcının sorumluluğundadır.
 
 ---
 ## 📞 İletişim ve Destek
