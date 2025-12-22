@@ -48,17 +48,29 @@ Sıkıcı gri programlardan sıkılmadınız mı? Siber Neon, Retro Amber, Okyan
 > **Okul ve Kurum Ağları İçin:**
 > Orbit, MEB (Fatih), Üniversite veya Şirket ağlarındaki kısıtlayıcı güvenlik duvarlarının yarattığı "SSL/Sertifika" hatalarını otomatik olarak algılar ve aşar. VPN gerektirmez, doğrudan çalışır.
 
+## ✨ Öne Çıkan Özellikler
+
+### 🎥 Üstün İndirme Yetenekleri
+*   **Çoklu Platform Desteği:** YouTube, YouTube Music, Instagram, TikTok, Twitter (X), Twitch, Facebook ve desteklenen 1000+ diğer site.
+*   **Oynatma Listesi (Playlist) İndirme:** Tek tıkla yüzlerce videoyu sıraya alın ve indirin.
+
+### 🚀 Gelişmiş Özellikler
+*   **Premium ve Üyelik İçerikleri:** Youtube Premium, Katıl (Members-Only) videoları veya gizli Instagram hesaplarından indirme yapmak için tarayıcı çerezlerinizi (Chrome, Edge, Firefox vb.) kullanır.
+
+*   **Altyazı Desteği:** Videolara ait altyazıları Türkçe, İngilizce veya tüm dillerde indirin. İster videoya gömün, ister `.srt` dosyası olarak kaydedin.
+*   **Toplu İndirme (Kuyruk Sistemi):** Linkleri listeye ekleyin, hepsini tek seferde indirin. Bilgisayar başında beklemenize gerek yok.
+### 🛠️ Sistem Araçları ve Otomasyon
+*   **Akıllı Pano Takibi:** Kopyaladığınız linki otomatik algılar.
+*   **Akıllı Tahta Modu:** Öğretmenler ve dokunmatik ekranlar için sanal klavye entegrasyonu.
+*   **Otomatik Güncelleme:** Program açılışta güncellemeleri kontrol eder. Ayrıca `yt-dlp` motorunu tek tıkla güncelleyebilirsiniz.
+*   **İşlem Sonrası Seçenekler:** İndirmeler bitince programı kapatabilir veya bilgisayarı otomatik olarak kapatabilir.
+*   **Detaylı MP3 Etiketleri:** İndirilen MP3 dosyalarına kapak resmi ve şarkı bilgilerini otomatik işler.
+
 * **Akıllı Arşiv:** İndirilenleri `Video` ve `Ses` klasörlerine otomatik ayırır.
 * **Temiz Kaldırma:** Programı kaldırdığınızda bilgisayarınızda çöp dosya bırakmaz.
 * **Reklamsız:** Arayüzde reklam, açılır pencere veya rahatsız edici öğeler yoktur.
 
 ---
-
-## 📸 Ekran Görüntüleri
-*(Buraya daha sonra programın arayüz resimlerini ekleyebilirsiniz)*
-
----
-
 ## ⚠️ Yasal Uyarı
 
 Bu yazılım; açık kaynaklı `yt-dlp`, `FFmpeg` ve `Aria2c` projelerinin grafik arayüzüdür. Yazılım **yalnızca kişisel kullanım ve eğitim (fair use)** amacıyla geliştirilmiştir. Telif hakkı ile korunan materyallerin izinsiz çoğaltılması ve dağıtılması kullanıcının sorumluluğundadır.
