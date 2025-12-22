@@ -64,4 +64,9 @@ Sıkıcı gri programlardan sıkılmadınız mı? Siber Neon, Retro Amber, Okyan
 Bu yazılım; açık kaynaklı `yt-dlp`, `FFmpeg` ve `Aria2c` projelerinin grafik arayüzüdür. Yazılım **yalnızca kişisel kullanım ve eğitim (fair use)** amacıyla geliştirilmiştir. Telif hakkı ile korunan materyallerin izinsiz çoğaltılması ve dağıtılması kullanıcının sorumluluğundadır.
 
 ---
+## 📞 İletişim ve Destek
+
+Hata bildirimi, öneri veya görüşleriniz için program içerisindeki **"Geri Bildirim"** menüsünü kullanabilir veya issues kısmından bildirebilirsiniz.
+
+
 **Geliştirici:** Sadullah E. | *Python & CustomTkinter*
