@@ -16,6 +16,7 @@ from src.ui.views.home_view import HomeView
 from src.ui.views.settings_view import SettingsView
 from src.ui.views.history_view import HistoryView
 from src.ui.views.about_view import AboutView
+from src.ui.views.converter_view import ConverterView
 
 class MainWindow(FluentWindow):
     def __init__(self):
@@ -34,6 +35,7 @@ class MainWindow(FluentWindow):
         # Create Views
         self.home_view = HomeView("Ana Sayfa")
         self.history_view = HistoryView("Geçmiş")
+        self.converter_view = ConverterView("Dönüştürücü")
         self.settings_view = SettingsView("Ayarlar")
         self.about_view = AboutView("Hakkında")
         
@@ -99,6 +101,13 @@ class MainWindow(FluentWindow):
             self.home_view, 
             FIF.HOME, 
             "Ana Sayfa"
+        )
+
+        # 1.3 Converter
+        self.addSubInterface(
+            self.converter_view,
+            FIF.EDIT,
+            "Dönüştürücü"
         )
 
         # 1.5 History
@@ -181,6 +190,8 @@ class MainWindow(FluentWindow):
         # Stop UI Workers first
         if hasattr(self, 'home_view'):
             self.home_view.stop_workers()
+        if hasattr(self, 'converter_view'):
+            self.converter_view.stop_workers()
             
         from src.utils import kill_external_processes
         kill_external_processes()

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Orbit Downloader"
-#define MyAppVersion "3.01"
+#define MyAppVersion "3.02"
 #define MyAppPublisher "Orbit Team"
 #define MyAppExeName "Orbit.exe"
 
@@ -19,7 +19,7 @@ DisableProgramGroupPage=yes
 ; Admin mode required for Program Files installation
 PrivilegesRequired=admin
 OutputDir=Output
-OutputBaseFilename=Orbit_Kurulum_x64_v3.01
+OutputBaseFilename=Orbit_Kurulum_x64_v3.02
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
