@@ -196,7 +196,7 @@ class ConverterView(QWidget):
         self.start_btn.setFixedHeight(40)
         self.start_btn.clicked.connect(self.start_conversion)
         
-        self.folder_btn = PushButton("İndirilenler Klasörü", self, FluentIcon.FOLDER)
+        self.folder_btn = PushButton("Dönüştürülenler Klasörü", self, FluentIcon.FOLDER)
         self.folder_btn.setFixedHeight(40)
         self.folder_btn.clicked.connect(self.open_output_folder)
         
