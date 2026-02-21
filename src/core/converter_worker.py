@@ -186,11 +186,18 @@ class ConverterWorker(QThread):
                  cmd.extend(['-loop', '0'])
             else: # Video
                  vq = self.opts.get('video_quality', 'original')
+                 fps_val = self.opts.get('fps', 'Orijinal')
+                 vbitrate_val = self.opts.get('vbitrate', 'Orijinal')
+                 abitrate_val = self.opts.get('abitrate', 'Orijinal')
+                 
                  vf_filters = []
                  af_filters = []
                  
                  if vq != 'original':
                       vf_filters.append(f'scale=-2:{vq.replace("p","")}')
+                      
+                 if fps_val != 'Orijinal' and fps_val.isdigit():
+                      vf_filters.append(f'fps={fps_val}')
                       
                  if speed_mult != 1.0:
                       vf_filters.append(f'setpts={1.0/speed_mult}*PTS')
@@ -204,13 +211,18 @@ class ConverterWorker(QThread):
                  elif af_filters and not mute_audio:
                       cmd.extend(['-filter:a', ','.join(af_filters)])
 
-                 if vf_filters or af_filters or mute_audio or trim_start or trim_end:
+                 if vf_filters or af_filters or mute_audio or trim_start or trim_end or vbitrate_val != 'Orijinal' or (abitrate_val != 'Orijinal' and not mute_audio):
                       cmd.extend(['-c:v', 'libx264', '-preset', 'fast'])
+                      if vbitrate_val != 'Orijinal':
+                           cmd.extend(['-b:v', vbitrate_val])
+                           
                       if not mute_audio:
-                           if not af_filters:
+                           if not af_filters and abitrate_val == 'Orijinal':
                                 cmd.extend(['-c:a', 'copy'])
                            else:
                                 cmd.extend(['-c:a', 'aac'])
+                                if abitrate_val != 'Orijinal':
+                                     cmd.extend(['-b:a', abitrate_val])
                  else:
                       cmd.extend(['-c:v', 'copy', '-c:a', 'copy'])
                  

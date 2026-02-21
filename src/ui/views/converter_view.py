@@ -124,9 +124,34 @@ class ConverterView(QWidget):
         
         self.form_layout.addLayout(self.opts_layout1)
         
-        # Options Row 2 (Speed & Mute)
+        # Options Row 2 (Advanced Options: FPS, Video Bitrate, Audio Bitrate)
         self.opts_layout2 = QHBoxLayout()
         self.opts_layout2.setSpacing(20)
+        
+        self.fps_label = BodyLabel("FPS:", self)
+        self.fps_combo = ComboBox(self)
+        self.fps_combo.addItems(["Orijinal", "24", "25", "30", "50", "60"])
+        
+        self.vbitrate_label = BodyLabel("Vid. Bitrate:", self)
+        self.vbitrate_combo = ComboBox(self)
+        self.vbitrate_combo.addItems(["Orijinal", "500k", "1000k", "2500k", "5000k", "8000k"])
+        
+        self.abitrate_label = BodyLabel("Ses Bitrate:", self)
+        self.abitrate_combo = ComboBox(self)
+        self.abitrate_combo.addItems(["Orijinal", "64k", "128k", "192k", "256k", "320k"])
+        
+        self.opts_layout2.addWidget(self.fps_label)
+        self.opts_layout2.addWidget(self.fps_combo, 1)
+        self.opts_layout2.addWidget(self.vbitrate_label)
+        self.opts_layout2.addWidget(self.vbitrate_combo, 1)
+        self.opts_layout2.addWidget(self.abitrate_label)
+        self.opts_layout2.addWidget(self.abitrate_combo, 1)
+        
+        self.form_layout.addLayout(self.opts_layout2)
+        
+        # Options Row 3 (Speed & Mute)
+        self.opts_layout3 = QHBoxLayout()
+        self.opts_layout3.setSpacing(20)
         
         self.speed_label = BodyLabel("Hız Seçeneği:", self)
         self.speed_combo = ComboBox(self)
@@ -134,12 +159,13 @@ class ConverterView(QWidget):
         self.speed_combo.setCurrentIndex(0)
         
         self.mute_check = CheckBox("Videodan Sesi Kaldır (Sessiz)", self)
+        self.mute_check.stateChanged.connect(self.on_mute_changed)
         
-        self.opts_layout2.addWidget(self.speed_label)
-        self.opts_layout2.addWidget(self.speed_combo, 1)
-        self.opts_layout2.addWidget(self.mute_check, 1)
+        self.opts_layout3.addWidget(self.speed_label)
+        self.opts_layout3.addWidget(self.speed_combo, 1)
+        self.opts_layout3.addWidget(self.mute_check, 1)
         
-        self.form_layout.addLayout(self.opts_layout2)
+        self.form_layout.addLayout(self.opts_layout3)
 
         # Naming Template Row
         self.template_layout = QHBoxLayout()
@@ -311,23 +337,42 @@ class ConverterView(QWidget):
         self.mute_check.setEnabled(True)
         self.quality_combo.setEnabled(True)
         
+        # Enable all advanced options first
+        self.fps_combo.setEnabled(True)
+        self.vbitrate_combo.setEnabled(True)
+        self.abitrate_combo.setEnabled(True)
+        
         if idx == 0: # MP4
-             self.quality_combo.addItems(["Orijinal", "1080p", "720p", "480p"])
+             self.quality_combo.addItems(["Orijinal", "1080p", "720p", "480p", "360p", "240p"])
+             self.abitrate_combo.setEnabled(not self.mute_check.isChecked())
         elif idx == 1: # MP3
              self.quality_combo.addItems(["320k (En İyi)", "192k (Standart)", "128k (Düşük)"])
              self.quality_combo.setCurrentIndex(1)
              self.mute_check.setEnabled(False)
              self.mute_check.setChecked(False)
+             self.fps_combo.setEnabled(False)
+             self.vbitrate_combo.setEnabled(False)
+             self.abitrate_combo.setEnabled(False) # Quality combo dictates this
         elif idx == 2: # M4A
              self.quality_combo.addItems(["320k", "192k", "128k"])
              self.quality_combo.setCurrentIndex(1)
              self.mute_check.setEnabled(False)
              self.mute_check.setChecked(False)
+             self.fps_combo.setEnabled(False)
+             self.vbitrate_combo.setEnabled(False)
+             self.abitrate_combo.setEnabled(False)
         elif idx == 3: # GIF
              self.quality_combo.addItems(["Standart GIF"])
              self.quality_combo.setEnabled(False)
              self.mute_check.setEnabled(False)
              self.mute_check.setChecked(False)
+             self.vbitrate_combo.setEnabled(False)
+             self.abitrate_combo.setEnabled(False)
+             
+    def on_mute_changed(self, state):
+        idx = self.format_combo.currentIndex()
+        if idx == 0: # MP4
+            self.abitrate_combo.setEnabled(not self.mute_check.isChecked())
 
     def on_trim_changed(self, state):
         if self.trim_check.isChecked():
@@ -339,6 +384,9 @@ class ConverterView(QWidget):
         self.input_btn.setEnabled(not busy)
         self.format_combo.setEnabled(not busy)
         self.quality_combo.setEnabled(not busy)
+        self.fps_combo.setEnabled(not busy)
+        self.vbitrate_combo.setEnabled(not busy)
+        self.abitrate_combo.setEnabled(not busy)
         self.trim_check.setEnabled(not busy)
         self.start_input.setEnabled(not busy)
         self.end_input.setEnabled(not busy)
@@ -380,6 +428,10 @@ class ConverterView(QWidget):
              opts['video_quality'] = q_text.lower()
         elif fmt in ['mp3', 'm4a']:
              opts['audio_quality'] = q_text.split()[0]
+             
+        opts['fps'] = self.fps_combo.currentText()
+        opts['vbitrate'] = self.vbitrate_combo.currentText()
+        opts['abitrate'] = self.abitrate_combo.currentText()
              
         opts['mute'] = self.mute_check.isChecked()
         
