@@ -4,7 +4,8 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from qfluentwidgets import (TitleLabel, BodyLabel, LineEdit, PushButton, 
                             PrimaryPushButton, ComboBox, CheckBox, ProgressBar,
-                            FluentIcon, InfoBar, InfoBarPosition, CaptionLabel)
+                            FluentIcon, InfoBar, InfoBarPosition, CaptionLabel,
+                            ListWidget, CardWidget, StrongBodyLabel, SubtitleLabel)
 
 from src.core.converter_worker import ConverterWorker, MediaInfoWorker
 from src.version import VERSION
@@ -69,7 +70,6 @@ class ConverterView(QWidget):
         self.form_layout.addLayout(self.input_layout)
         
         # Info Card (Hidden by default)
-        from qfluentwidgets import CardWidget, StrongBodyLabel
         from PySide6.QtWidgets import QGridLayout
         
         self.info_card = CardWidget(self)
@@ -140,6 +140,18 @@ class ConverterView(QWidget):
         self.opts_layout2.addWidget(self.mute_check, 1)
         
         self.form_layout.addLayout(self.opts_layout2)
+
+        # Naming Template Row
+        self.template_layout = QHBoxLayout()
+        self.template_label = BodyLabel("İsim Şablonu:", self)
+        self.template_input = LineEdit(self)
+        self.template_input.setPlaceholderText("{name}_{quality}_{format}")
+        self.template_input.setText(get_settings().value("conv_template", "{name}_converted"))
+        self.template_input.textChanged.connect(lambda t: get_settings().setValue("conv_template", t))
+        
+        self.template_layout.addWidget(self.template_label)
+        self.template_layout.addWidget(self.template_input, 1)
+        self.form_layout.addLayout(self.template_layout)
         
         # Trim Options
         self.trim_check = CheckBox("Süreyi Kırp/Kes", self)
@@ -194,6 +206,21 @@ class ConverterView(QWidget):
         self.status_label.setAlignment(Qt.AlignCenter)
         self.form_layout.addWidget(self.status_label)
         
+        # Recent Files
+        self.recent_container = CardWidget(self)
+        self.recent_layout = QVBoxLayout(self.recent_container)
+        self.recent_title = SubtitleLabel("Son İşlemler", self)
+        self.recent_list = ListWidget(self)
+        self.recent_list.setFixedHeight(120)
+        self.recent_list.itemDoubleClicked.connect(self.on_recent_item_clicked)
+        
+        self.recent_layout.addWidget(self.recent_title)
+        self.recent_layout.addWidget(self.recent_list)
+        self.form_layout.addWidget(self.recent_container)
+        
+        # Load recent files
+        self.load_recent_files()
+        
         # Main layout wrap
         self.v_layout.addStretch(1)
         self.v_layout.addWidget(self.form_container, 0, Qt.AlignHCenter)
@@ -232,6 +259,43 @@ class ConverterView(QWidget):
         self.info_res_val.setText(info.get('resolution', '-'))
         self.info_size_val.setText(info.get('size', '-'))
         self.info_extra_val.setText(info.get('extra', '-'))
+
+    def load_recent_files(self):
+        import json
+        settings = get_settings()
+        data = settings.value("conv_recent_files", "[]")
+        try:
+            files = json.loads(data) if isinstance(data, str) else data
+            self.recent_list.clear()
+            for f in files:
+                if os.path.exists(f):
+                    self.recent_list.addItem(f)
+        except:
+            pass
+
+    def add_to_recent(self, path):
+        import json
+        settings = get_settings()
+        data = settings.value("conv_recent_files", "[]")
+        try:
+            files = json.loads(data) if isinstance(data, str) else data
+        except:
+            files = []
+            
+        if path in files:
+            files.remove(path)
+        files.insert(0, path)
+        files = files[:10] # Keep last 10
+        
+        settings.setValue("conv_recent_files", json.dumps(files))
+        self.load_recent_files()
+
+    def on_recent_item_clicked(self, item):
+        path = item.text()
+        if os.path.exists(path):
+            os.startfile(os.path.dirname(path))
+        else:
+            InfoBar.warning(title="Dosya Bulunamadı", content="Dosya taşınmış veya silinmiş olabilir.", parent=self)
 
     def on_format_changed(self, idx):
         self.quality_combo.clear()
@@ -333,15 +397,23 @@ class ConverterView(QWidget):
         base_name = os.path.basename(input_path)
         name_without_ext = os.path.splitext(base_name)[0]
         
-        # Add suffix if trimming or converting
-        suffix = f"_converted"
-        output_name = f"{name_without_ext}{suffix}.{fmt}"
+        # Use Custom Template
+        template = self.template_input.text().strip()
+        if not template:
+            template = "{name}_converted"
+            
+        # Replace tokens
+        out_name = template.replace("{name}", name_without_ext)
+        out_name = out_name.replace("{format}", fmt)
+        out_name = out_name.replace("{quality}", q_text.replace(" ", "_").lower())
+        
+        output_name = f"{out_name}.{fmt}"
         output_path = os.path.join(out_dir, output_name)
         
         # Prevent overwrite by appending numbers
         counter = 1
         while os.path.exists(output_path):
-             output_path = os.path.join(out_dir, f"{name_without_ext}{suffix}_{counter}.{fmt}")
+             output_path = os.path.join(out_dir, f"{out_name}_{counter}.{fmt}")
              counter += 1
              
         self.set_ui_busy(True)
@@ -363,6 +435,7 @@ class ConverterView(QWidget):
     def on_finished(self, output_path, msg):
         self.set_ui_busy(False)
         self.status_label.setText("Hazır.")
+        self.add_to_recent(output_path)
         InfoBar.success(title="Başarılı", content=msg,
                         position=InfoBarPosition.BOTTOM_RIGHT, duration=3000, parent=self)
                         
