@@ -39,6 +39,7 @@ Source: "dist\Orbit\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs cr
 Source: "ffmpeg.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "ffprobe.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "yt-dlp.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "gallery-dl.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

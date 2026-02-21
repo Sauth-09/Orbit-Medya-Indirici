@@ -189,11 +189,20 @@ class ConverterView(QWidget):
         
         self.form_layout.addSpacing(20)
         
-        # Action Button
+        # Action Row
+        self.action_layout = QHBoxLayout()
+        
         self.start_btn = PrimaryPushButton("Dönüştürmeyi Başlat", self)
         self.start_btn.setFixedHeight(40)
         self.start_btn.clicked.connect(self.start_conversion)
-        self.form_layout.addWidget(self.start_btn)
+        
+        self.folder_btn = PushButton("İndirilenler Klasörü", self, FluentIcon.FOLDER)
+        self.folder_btn.setFixedHeight(40)
+        self.folder_btn.clicked.connect(self.open_output_folder)
+        
+        self.action_layout.addWidget(self.start_btn, 3)
+        self.action_layout.addWidget(self.folder_btn, 1)
+        self.form_layout.addLayout(self.action_layout)
         
         # Progress
         self.progress_bar = ProgressBar(self)
@@ -439,6 +448,16 @@ class ConverterView(QWidget):
         InfoBar.success(title="Başarılı", content=msg,
                         position=InfoBarPosition.BOTTOM_RIGHT, duration=3000, parent=self)
                         
+    def open_output_folder(self):
+        settings = get_settings()
+        default_path = get_default_download_folder()
+        out_dir = settings.value("download_folder", default_path)
+        
+        if os.path.exists(out_dir):
+            os.startfile(out_dir)
+        else:
+            InfoBar.warning(title="Klasör Bulunamadı", content="Çıktı klasörü henüz oluşturulmamış.", parent=self)
+                         
     def stop_workers(self):
         if self.worker and self.worker.isRunning():
              self.worker.stop()
